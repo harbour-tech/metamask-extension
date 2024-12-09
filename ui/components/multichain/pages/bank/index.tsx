@@ -9,12 +9,18 @@ import {
   Button,
   ButtonSize,
   ButtonVariant,
+  Icon,
+  IconName,
+  IconSize,
   Text,
 } from '../../../component-library';
 import {
   AlignItems,
   BlockSize,
   Display,
+  FlexDirection,
+  IconColor,
+  JustifyContent,
   TextColor,
   TextVariant,
 } from '../../../../helpers/constants/design-system';
@@ -163,9 +169,35 @@ const BankPage: React.FC = () => {
   };
 
   return (
-    <Box className="iban-details" padding={4}>
+    <Box className="iban-details" padding={3}>
       {authentication && (
         <Box>
+          <Box
+            alignItems={AlignItems.center}
+            display={Display.Flex}
+            justifyContent={JustifyContent.center}
+            marginBottom={8}
+            width={BlockSize.Full}
+          >
+            <img src="images/logo/metamask-fox-big.svg" alt="MetaMask Logo" />
+            <Box display={Display.Flex} flexDirection={FlexDirection.Column}>
+              <Icon
+                color={IconColor.iconDefault}
+                marginInlineStart={4}
+                marginInlineEnd={4}
+                name={IconName.Arrow2Right}
+                size={IconSize.Sm}
+              />
+              <Icon
+                color={IconColor.iconDefault}
+                marginInlineEnd={4}
+                marginInlineStart={4}
+                name={IconName.Arrow2Left}
+                size={IconSize.Sm}
+              />
+            </Box>
+            <img src="images/logo/harbour.svg" alt="Harbour Logo" />
+          </Box>
           <Text variant={TextVariant.headingMd} marginBottom={8}>
             Get your free MetaMask IBAN
           </Text>
@@ -206,7 +238,7 @@ const BankPage: React.FC = () => {
           <Box
             alignItems={AlignItems.flexStart}
             display={Display.Flex}
-            gap={6}
+            gap={4}
             marginTop={1}
           >
             <Button
