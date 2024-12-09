@@ -13,6 +13,7 @@ import {
 } from '../../../component-library';
 import {
   AlignItems,
+  BlockSize,
   Display,
   TextColor,
   TextVariant,
@@ -163,27 +164,70 @@ const BankPage: React.FC = () => {
 
   return (
     <Box className="iban-details" padding={4}>
-      <Button
-        onClick={() => history.goBack()}
-        size={ButtonSize.Sm}
-        variant={ButtonVariant.Secondary}
-      >
-        Back
-      </Button>
       {authentication && (
         <Box>
-          <Text variant={TextVariant.headingLg} marginBottom={4}>
-            Connect Harbour Account
+          <Text variant={TextVariant.headingMd} marginBottom={8}>
+            Get your free MetaMask IBAN
           </Text>
-          <Text variant={TextVariant.bodySm} marginBottom={4}>
-            <a
-              href={authentication.authenticationUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+          <Text variant={TextVariant.bodyMd} marginTop={1} marginBottom={5}>
+            We’ve partnered with Harbour to give you a free EUR IBAN linked to
+            your MetaMask Wallet.
+          </Text>
+          <Text variant={TextVariant.bodyMd} marginBottom={5}>
+            This lets you make instant payments between your bank account and
+            your MetaMask Wallet.
+          </Text>
+          <Text variant={TextVariant.bodyMd} marginBottom={5}>
+            To generate your IBAN you’ll just need to verify your identity
+            first.
+          </Text>
+          <Text variant={TextVariant.bodyMd}>What you’ll need:</Text>
+          <ul style={{ listStyle: 'disc', marginLeft: 25 }}>
+            <li>
+              <Text variant={TextVariant.bodyMd}>
+                Residency in an EU country
+              </Text>
+            </li>
+            <li>
+              <Text variant={TextVariant.bodyMd}>
+                A mobile phone number from such country
+              </Text>
+            </li>
+            <li>
+              <Text variant={TextVariant.bodyMd}>
+                A valid identity document, such as a driving license, passport
+                or national ID card.
+              </Text>
+            </li>
+          </ul>
+          <Text variant={TextVariant.bodyMd} marginBottom={8} marginTop={5}>
+            The process only takes a couple of minutes.
+          </Text>
+          <Box
+            alignItems={AlignItems.flexStart}
+            display={Display.Flex}
+            gap={6}
+            marginTop={1}
+          >
+            <Button
+              onClick={() => history.goBack()}
+              size={ButtonSize.Sm}
+              variant={ButtonVariant.Primary}
+              width={BlockSize.FourTwelfths}
             >
-              Open Harbour.fi
-            </a>
-          </Text>
+              Back
+            </Button>
+            <Button
+              externalLink
+              href={authentication.authenticationUrl}
+              size={ButtonSize.Sm}
+              target="_blank"
+              variant={ButtonVariant.Primary}
+              width={BlockSize.EightTwelfths}
+            >
+              Next
+            </Button>
+          </Box>
         </Box>
       )}
       {bankDetails.coordinates && (
