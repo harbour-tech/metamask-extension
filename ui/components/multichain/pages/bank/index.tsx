@@ -501,7 +501,7 @@ const BankPage: React.FC = () => {
               </div>
             </div>
             {feeResults?.exchangeRate && (
-              <span>
+              <span style={{ marginLeft: '10px' }}>
                 USDC/{currency === CurrencyId.EUR ? 'EUR' : 'GBP'} rate:{' '}
                 {feeResults?.exchangeRate}
               </span>
