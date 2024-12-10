@@ -169,7 +169,13 @@ const BankPage: React.FC = () => {
   };
 
   return (
-    <Box className="iban-details" padding={4}>
+    <Box
+      className="iban-details"
+      paddingBottom={4}
+      paddingLeft={3}
+      paddingRight={3}
+      paddingTop={4}
+    >
       {authentication && (
         <Box paddingBottom={8}>
           <Box
@@ -198,41 +204,83 @@ const BankPage: React.FC = () => {
             </Box>
             <img src="images/logo/harbour.svg" alt="Harbour Logo" />
           </Box>
-          <Text variant={TextVariant.headingMd} marginBottom={8}>
+          <Text
+            variant={TextVariant.headingMd}
+            marginBottom={8}
+            style={{
+              fontFamily: 'Space Grotesk',
+              fontStyle: 'normal',
+              fontWeight: 'normal',
+              fontSize: '22px',
+              textAlign: 'center',
+            }}
+          >
             Get your free MetaMask IBAN
           </Text>
-          <Text variant={TextVariant.bodyMd} marginTop={1} marginBottom={5}>
+          <Text
+            variant={TextVariant.bodyMd}
+            marginTop={1}
+            marginBottom={5}
+            style={{ fontFamily: 'Space Grotesk', fontStyle: 'normal' }}
+          >
             We’ve partnered with Harbour to give you a free EUR IBAN linked to
             your MetaMask Wallet.
           </Text>
-          <Text variant={TextVariant.bodyMd} marginBottom={5}>
+          <Text
+            variant={TextVariant.bodyMd}
+            marginBottom={5}
+            style={{ fontFamily: 'Space Grotesk', fontStyle: 'normal' }}
+          >
             This lets you make instant payments between your bank account and
             your MetaMask Wallet.
           </Text>
-          <Text variant={TextVariant.bodyMd} marginBottom={5}>
+          <Text
+            variant={TextVariant.bodyMd}
+            marginBottom={5}
+            style={{ fontFamily: 'Space Grotesk', fontStyle: 'normal' }}
+          >
             To generate your IBAN you’ll just need to verify your identity
             first.
           </Text>
-          <Text variant={TextVariant.bodyMd}>What you’ll need:</Text>
+          <Text
+            variant={TextVariant.bodyMd}
+            style={{ fontFamily: 'Space Grotesk', fontStyle: 'normal' }}
+          >
+            What you’ll need:
+          </Text>
           <ul style={{ listStyle: 'disc', marginLeft: 25 }}>
             <li>
-              <Text variant={TextVariant.bodyMd}>
+              <Text
+                variant={TextVariant.bodyMd}
+                style={{ fontFamily: 'Space Grotesk', fontStyle: 'normal' }}
+              >
                 Residency in an EU country
               </Text>
             </li>
             <li>
-              <Text variant={TextVariant.bodyMd}>
+              <Text
+                variant={TextVariant.bodyMd}
+                style={{ fontFamily: 'Space Grotesk', fontStyle: 'normal' }}
+              >
                 A mobile phone number from such country
               </Text>
             </li>
             <li>
-              <Text variant={TextVariant.bodyMd}>
+              <Text
+                variant={TextVariant.bodyMd}
+                style={{ fontFamily: 'Space Grotesk', fontStyle: 'normal' }}
+              >
                 A valid identity document, such as a driving license, passport
                 or national ID card.
               </Text>
             </li>
           </ul>
-          <Text variant={TextVariant.bodyMd} marginBottom={8} marginTop={5}>
+          <Text
+            variant={TextVariant.bodyMd}
+            marginBottom={8}
+            marginTop={5}
+            style={{ fontFamily: 'Space Grotesk', fontStyle: 'normal' }}
+          >
             The process only takes a couple of minutes.
           </Text>
           <Box
@@ -247,6 +295,7 @@ const BankPage: React.FC = () => {
               size={ButtonSize.Md}
               variant={ButtonVariant.Primary}
               width={BlockSize.FourTwelfths}
+              style={{ fontFamily: 'Space Grotesk', fontStyle: 'normal' }}
             >
               Back
             </Button>
@@ -257,6 +306,7 @@ const BankPage: React.FC = () => {
               target="_blank"
               variant={ButtonVariant.Primary}
               width={BlockSize.EightTwelfths}
+              style={{ fontFamily: 'Space Grotesk', fontStyle: 'normal' }}
             >
               Next
             </Button>
