@@ -9,11 +9,18 @@ import {
   Button,
   ButtonSize,
   ButtonVariant,
+  Icon,
+  IconName,
+  IconSize,
   Text,
 } from '../../../component-library';
 import {
   AlignItems,
+  BlockSize,
   Display,
+  FlexDirection,
+  IconColor,
+  JustifyContent,
   TextColor,
   TextVariant,
 } from '../../../../helpers/constants/design-system';
@@ -162,28 +169,148 @@ const BankPage: React.FC = () => {
   };
 
   return (
-    <Box className="iban-details" padding={4}>
-      <Button
-        onClick={() => history.goBack()}
-        size={ButtonSize.Sm}
-        variant={ButtonVariant.Secondary}
-      >
-        Back
-      </Button>
+    <Box
+      className="iban-details"
+      paddingBottom={4}
+      paddingLeft={3}
+      paddingRight={3}
+      paddingTop={4}
+    >
       {authentication && (
-        <Box>
-          <Text variant={TextVariant.headingLg} marginBottom={4}>
-            Connect Harbour Account
+        <Box paddingBottom={8}>
+          <Box
+            alignItems={AlignItems.center}
+            display={Display.Flex}
+            justifyContent={JustifyContent.center}
+            marginBottom={8}
+            width={BlockSize.Full}
+          >
+            <img src="images/logo/metamask-fox-big.svg" alt="MetaMask Logo" />
+            <Box display={Display.Flex} flexDirection={FlexDirection.Column}>
+              <Icon
+                color={IconColor.iconDefault}
+                marginInlineStart={4}
+                marginInlineEnd={4}
+                name={IconName.Arrow2Right}
+                size={IconSize.Sm}
+              />
+              <Icon
+                color={IconColor.iconDefault}
+                marginInlineEnd={4}
+                marginInlineStart={4}
+                name={IconName.Arrow2Left}
+                size={IconSize.Sm}
+              />
+            </Box>
+            <img src="images/logo/harbour.svg" alt="Harbour Logo" />
+          </Box>
+          <Text
+            variant={TextVariant.headingMd}
+            marginBottom={8}
+            style={{
+              fontFamily: 'Space Grotesk',
+              fontStyle: 'normal',
+              fontWeight: 'normal',
+              fontSize: '22px',
+              textAlign: 'center',
+            }}
+          >
+            Get your free MetaMask IBAN
           </Text>
-          <Text variant={TextVariant.bodySm} marginBottom={4}>
-            <a
-              href={authentication.authenticationUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+          <Text
+            variant={TextVariant.bodyMd}
+            marginTop={1}
+            marginBottom={5}
+            style={{ fontFamily: 'Space Grotesk', fontStyle: 'normal' }}
+          >
+            We’ve partnered with Harbour to give you a free EUR IBAN linked to
+            your MetaMask Wallet.
+          </Text>
+          <Text
+            variant={TextVariant.bodyMd}
+            marginBottom={5}
+            style={{ fontFamily: 'Space Grotesk', fontStyle: 'normal' }}
+          >
+            This lets you make instant payments between your bank account and
+            your MetaMask Wallet.
+          </Text>
+          <Text
+            variant={TextVariant.bodyMd}
+            marginBottom={5}
+            style={{ fontFamily: 'Space Grotesk', fontStyle: 'normal' }}
+          >
+            To generate your IBAN you’ll just need to verify your identity
+            first.
+          </Text>
+          <Text
+            variant={TextVariant.bodyMd}
+            style={{ fontFamily: 'Space Grotesk', fontStyle: 'normal' }}
+          >
+            What you’ll need:
+          </Text>
+          <ul style={{ listStyle: 'disc', marginLeft: 25 }}>
+            <li>
+              <Text
+                variant={TextVariant.bodyMd}
+                style={{ fontFamily: 'Space Grotesk', fontStyle: 'normal' }}
+              >
+                Residency in an EU country
+              </Text>
+            </li>
+            <li>
+              <Text
+                variant={TextVariant.bodyMd}
+                style={{ fontFamily: 'Space Grotesk', fontStyle: 'normal' }}
+              >
+                A mobile phone number from such country
+              </Text>
+            </li>
+            <li>
+              <Text
+                variant={TextVariant.bodyMd}
+                style={{ fontFamily: 'Space Grotesk', fontStyle: 'normal' }}
+              >
+                A valid identity document, such as a driving license, passport
+                or national ID card.
+              </Text>
+            </li>
+          </ul>
+          <Text
+            variant={TextVariant.bodyMd}
+            marginBottom={8}
+            marginTop={5}
+            style={{ fontFamily: 'Space Grotesk', fontStyle: 'normal' }}
+          >
+            The process only takes a couple of minutes.
+          </Text>
+          <Box
+            alignItems={AlignItems.flexStart}
+            display={Display.Flex}
+            gap={4}
+            marginTop={1}
+          >
+            <Button
+              danger
+              onClick={() => history.goBack()}
+              size={ButtonSize.Md}
+              variant={ButtonVariant.Primary}
+              width={BlockSize.FourTwelfths}
+              style={{ fontFamily: 'Space Grotesk', fontStyle: 'normal' }}
             >
-              Open Harbour.fi
-            </a>
-          </Text>
+              Back
+            </Button>
+            <Button
+              externalLink
+              href={authentication.authenticationUrl}
+              size={ButtonSize.Md}
+              target="_blank"
+              variant={ButtonVariant.Primary}
+              width={BlockSize.EightTwelfths}
+              style={{ fontFamily: 'Space Grotesk', fontStyle: 'normal' }}
+            >
+              Next
+            </Button>
+          </Box>
         </Box>
       )}
       {bankDetails.coordinates && (
