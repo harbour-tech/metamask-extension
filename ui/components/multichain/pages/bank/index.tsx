@@ -169,9 +169,9 @@ const BankPage: React.FC = () => {
   };
 
   return (
-    <Box className="iban-details" padding={3}>
+    <Box className="iban-details" padding={4}>
       {authentication && (
-        <Box>
+        <Box paddingBottom={8}>
           <Box
             alignItems={AlignItems.center}
             display={Display.Flex}
@@ -242,8 +242,9 @@ const BankPage: React.FC = () => {
             marginTop={1}
           >
             <Button
+              danger
               onClick={() => history.goBack()}
-              size={ButtonSize.Sm}
+              size={ButtonSize.Md}
               variant={ButtonVariant.Primary}
               width={BlockSize.FourTwelfths}
             >
@@ -252,7 +253,7 @@ const BankPage: React.FC = () => {
             <Button
               externalLink
               href={authentication.authenticationUrl}
-              size={ButtonSize.Sm}
+              size={ButtonSize.Md}
               target="_blank"
               variant={ButtonVariant.Primary}
               width={BlockSize.EightTwelfths}
