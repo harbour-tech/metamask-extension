@@ -19,7 +19,6 @@ import {
 } from '../../../component-library';
 import {
   AlignItems,
-  BackgroundColor,
   BlockSize,
   Display,
   FlexDirection,
@@ -370,7 +369,7 @@ const BankPage: React.FC = () => {
         </Box>
       )}
       {bankDetails.coordinates && (
-        <>
+        <Box paddingBottom={8} paddingTop={1}>
           <Box>
             <div
               style={{
@@ -512,17 +511,40 @@ const BankPage: React.FC = () => {
               </span>
             )}
           </Box>
+          <Text
+            variant={TextVariant.bodyMd}
+            marginBottom={5}
+            marginTop={6}
+            width={BlockSize.Min}
+            style={{
+              fontFamily: 'Space Grotesk',
+              fontStyle: 'normal',
+              minWidth: 'fit-content',
+            }}
+          >
+            Send {currency === CurrencyId.EUR ? 'EUR' : 'GBP'} to this account
+            to receive USDC on the wallet you have selected.{' '}
+            {currency === CurrencyId.EUR && (
+              <span className="underline">
+                Use SEPA Instant transfers to receive your assets immediately.
+              </span>
+            )}
+          </Text>
           {bankDetails.coordinates && 'iban' in bankDetails.coordinates && (
             <FormTextField
               value={accountNumber(bankDetails?.coordinates)}
               readOnly
               fullWidth
               label="IBAN"
+              marginBottom={4}
+              labelProps={{
+                variant: TextVariant.bodyMd,
+                style: { fontWeight: 'normal', marginBottom: '3px' },
+              }}
               inputProps={{
                 variant: TextVariant.bodyMd,
                 textAlign: TextAlign.Left,
               }}
-              backgroundColor={BackgroundColor.backgroundAlternative}
               endAccessory={
                 <ButtonIcon
                   iconName={IconName.Copy}
@@ -544,11 +566,15 @@ const BankPage: React.FC = () => {
                 readOnly
                 fullWidth
                 label="Sort Code"
+                marginBottom={4}
+                labelProps={{
+                  variant: TextVariant.bodyMd,
+                  style: { fontWeight: 'normal', marginBottom: '3px' },
+                }}
                 inputProps={{
                   variant: TextVariant.bodyMd,
                   textAlign: TextAlign.Left,
                 }}
-                backgroundColor={BackgroundColor.backgroundAlternative}
                 endAccessory={
                   <ButtonIcon
                     iconName={IconName.Copy}
@@ -569,11 +595,15 @@ const BankPage: React.FC = () => {
                 readOnly
                 fullWidth
                 label="Account Number"
+                marginBottom={4}
+                labelProps={{
+                  variant: TextVariant.bodyMd,
+                  style: { fontWeight: 'normal', marginBottom: '3px' },
+                }}
                 inputProps={{
                   variant: TextVariant.bodyMd,
                   textAlign: TextAlign.Left,
                 }}
-                backgroundColor={BackgroundColor.backgroundAlternative}
                 endAccessory={
                   <ButtonIcon
                     iconName={IconName.Copy}
@@ -594,11 +624,15 @@ const BankPage: React.FC = () => {
             readOnly
             fullWidth
             label="Name"
+            marginBottom={4}
+            labelProps={{
+              variant: TextVariant.bodyMd,
+              style: { fontWeight: 'normal', marginBottom: '3px' },
+            }}
             inputProps={{
               variant: TextVariant.bodyMd,
               textAlign: TextAlign.Left,
             }}
-            backgroundColor={BackgroundColor.backgroundAlternative}
             endAccessory={
               <ButtonIcon
                 iconName={IconName.Copy}
@@ -615,11 +649,14 @@ const BankPage: React.FC = () => {
             readOnly
             fullWidth
             label="Reference"
+            labelProps={{
+              variant: TextVariant.bodyMd,
+              style: { fontWeight: 'normal', marginBottom: '3px' },
+            }}
             inputProps={{
               variant: TextVariant.bodyMd,
               textAlign: TextAlign.Left,
             }}
-            backgroundColor={BackgroundColor.backgroundAlternative}
             endAccessory={
               <ButtonIcon
                 iconName={IconName.Copy}
@@ -631,7 +668,20 @@ const BankPage: React.FC = () => {
               />
             }
           />
-        </>
+          <Button
+            display={Display.Block}
+            marginLeft="auto"
+            marginRight="auto"
+            marginTop={12}
+            onClick={() => history.goBack()}
+            size={ButtonSize.Sm}
+            style={{ fontFamily: 'Space Grotesk', fontStyle: 'normal' }}
+            variant={ButtonVariant.Primary}
+            width={BlockSize.ElevenTwelfths}
+          >
+            Done
+          </Button>
+        </Box>
       )}
     </Box>
   );
