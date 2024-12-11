@@ -7,8 +7,11 @@ import browser from 'webextension-polyfill';
 import {
   Box,
   Button,
+  ButtonIcon,
+  ButtonIconSize,
   ButtonSize,
   ButtonVariant,
+  FormTextField,
   Icon,
   IconName,
   IconSize,
@@ -16,11 +19,13 @@ import {
 } from '../../../component-library';
 import {
   AlignItems,
+  BackgroundColor,
   BlockSize,
   Display,
   FlexDirection,
   IconColor,
   JustifyContent,
+  TextAlign,
   TextColor,
   TextVariant,
 } from '../../../../helpers/constants/design-system';
@@ -507,94 +512,125 @@ const BankPage: React.FC = () => {
               </span>
             )}
           </Box>
-          <Text
-            marginTop={4}
-            variant={TextVariant.headingMd}
-            color={TextColor.textDefault}
-          >
-            {isIban(bankDetails.coordinates) ? 'IBAN' : 'Account Number'}
-          </Text>
-          <Box display={Display.Flex} alignItems={AlignItems.center} gap={2}>
-            <Text variant={TextVariant.bodyMd}>
-              {accountNumber(bankDetails?.coordinates)}
-            </Text>
-            <Button
-              onClick={() =>
-                handleCopy(accountNumber(bankDetails?.coordinates))
-              }
-              size={ButtonSize.Sm}
-              variant={ButtonVariant.Secondary}
-            >
-              Copy
-            </Button>
-          </Box>
-          {!isIban(bankDetails.coordinates) && (
-            <Box>
-              <Text
-                marginTop={4}
-                variant={TextVariant.headingMd}
-                color={TextColor.textDefault}
-              >
-                Sort Code
-              </Text>
-              <Box
-                display={Display.Flex}
-                alignItems={AlignItems.center}
-                gap={2}
-              >
-                <Text variant={TextVariant.bodyMd}>
-                  {(bankDetails.coordinates as ScanCoordinates).sortCode}
-                </Text>
-                <Button
+          {bankDetails.coordinates && 'iban' in bankDetails.coordinates && (
+            <FormTextField
+              value={accountNumber(bankDetails?.coordinates)}
+              readOnly
+              fullWidth
+              label="IBAN"
+              inputProps={{
+                variant: TextVariant.bodyMd,
+                textAlign: TextAlign.Left,
+              }}
+              backgroundColor={BackgroundColor.backgroundAlternative}
+              endAccessory={
+                <ButtonIcon
+                  iconName={IconName.Copy}
+                  size={ButtonIconSize.Sm}
+                  color={IconColor.iconAlternative}
+                  ariaLabel="Copy to clipboard"
+                  title="Copy to clipboard"
                   onClick={() =>
-                    handleCopy(
-                      (bankDetails.coordinates as ScanCoordinates).sortCode,
-                    )
+                    handleCopy(accountNumber(bankDetails?.coordinates))
                   }
-                  size={ButtonSize.Sm}
-                  variant={ButtonVariant.Secondary}
-                >
-                  Copy
-                </Button>
-              </Box>
+                />
+              }
+            />
+          )}
+          {bankDetails.coordinates && 'sortCode' in bankDetails.coordinates && (
+            <Box display={Display.Flex}>
+              <FormTextField
+                value={bankDetails.coordinates.sortCode}
+                readOnly
+                fullWidth
+                label="Sort Code"
+                inputProps={{
+                  variant: TextVariant.bodyMd,
+                  textAlign: TextAlign.Left,
+                }}
+                backgroundColor={BackgroundColor.backgroundAlternative}
+                endAccessory={
+                  <ButtonIcon
+                    iconName={IconName.Copy}
+                    size={ButtonIconSize.Sm}
+                    color={IconColor.iconAlternative}
+                    ariaLabel="Copy to clipboard"
+                    title="Copy to clipboard"
+                    onClick={() =>
+                      handleCopy(
+                        (bankDetails.coordinates as ScanCoordinates).sortCode,
+                      )
+                    }
+                  />
+                }
+              />
+              <FormTextField
+                value={accountNumber(bankDetails?.coordinates)}
+                readOnly
+                fullWidth
+                label="Account Number"
+                inputProps={{
+                  variant: TextVariant.bodyMd,
+                  textAlign: TextAlign.Left,
+                }}
+                backgroundColor={BackgroundColor.backgroundAlternative}
+                endAccessory={
+                  <ButtonIcon
+                    iconName={IconName.Copy}
+                    size={ButtonIconSize.Sm}
+                    color={IconColor.iconAlternative}
+                    ariaLabel="Copy to clipboard"
+                    title="Copy to clipboard"
+                    onClick={() =>
+                      handleCopy(accountNumber(bankDetails?.coordinates))
+                    }
+                  />
+                }
+              />
             </Box>
           )}
-          <Text
-            marginTop={4}
-            variant={TextVariant.headingMd}
-            color={TextColor.textDefault}
-          >
-            Account Holder
-          </Text>
-          <Box display={Display.Flex} alignItems={AlignItems.center} gap={2}>
-            <Text variant={TextVariant.bodyMd}>
-              {bankDetails.accountHolder}
-            </Text>
-            <Button
-              onClick={() => handleCopy(bankDetails.accountHolder)}
-              size={ButtonSize.Sm}
-              variant={ButtonVariant.Secondary}
-            >
-              Copy
-            </Button>
-          </Box>
-          <Text
-            marginTop={4}
-            variant={TextVariant.headingMd}
-            color={TextColor.textDefault}
-          >
-            Payment Reference
-          </Text>
-          <Box display={Display.Flex} alignItems={AlignItems.center} gap={2}>
-            <Text variant={TextVariant.bodyMd}>{bankDetails.reference}</Text>
-            <Button
-              onClick={() => handleCopy(bankDetails.reference)}
-              size={ButtonSize.Sm}
-              variant={ButtonVariant.Secondary}
-            >
-              Copy
-            </Button>
-          </Box>
+          <FormTextField
+            value={bankDetails.accountHolder}
+            readOnly
+            fullWidth
+            label="Name"
+            inputProps={{
+              variant: TextVariant.bodyMd,
+              textAlign: TextAlign.Left,
+            }}
+            backgroundColor={BackgroundColor.backgroundAlternative}
+            endAccessory={
+              <ButtonIcon
+                iconName={IconName.Copy}
+                size={ButtonIconSize.Sm}
+                color={IconColor.iconAlternative}
+                ariaLabel="Copy to clipboard"
+                title="Copy to clipboard"
+                onClick={() => handleCopy(bankDetails.accountHolder)}
+              />
+            }
+          />
+          <FormTextField
+            value="PUSDC1"
+            readOnly
+            fullWidth
+            label="Reference"
+            inputProps={{
+              variant: TextVariant.bodyMd,
+              textAlign: TextAlign.Left,
+            }}
+            backgroundColor={BackgroundColor.backgroundAlternative}
+            endAccessory={
+              <ButtonIcon
+                iconName={IconName.Copy}
+                size={ButtonIconSize.Sm}
+                color={IconColor.iconAlternative}
+                ariaLabel="Copy to clipboard"
+                title="Copy to clipboard"
+                onClick={() => handleCopy('PUSDC1')}
+              />
+            }
+          />
         </>
       )}
     </Box>
