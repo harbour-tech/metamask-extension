@@ -376,6 +376,7 @@ const BankPage: React.FC = () => {
                 width: '99%',
                 minHeight: '40px',
                 padding: '10px',
+                backgroundColor: isDarkTheme ? 'transparent' : 'white',
                 borderWidth: '2px',
                 borderStyle: 'solid',
                 borderColor: amountInputFocused ? borderFocus : borderNormal,
@@ -389,7 +390,14 @@ const BankPage: React.FC = () => {
                 inputRef.current?.focus?.();
               }}
             >
-              <Text variant={TextVariant.bodyMd} style={{ fontSize: '14px' }}>
+              <Text
+                variant={TextVariant.bodyMd}
+                style={{
+                  fontSize: '14px',
+                  fontFamily: 'Space Grotesk',
+                  fontStyle: 'normal',
+                }}
+              >
                 Send
               </Text>
               <div
@@ -424,10 +432,12 @@ const BankPage: React.FC = () => {
                   value={amount || undefined}
                   onChange={(e) => setAmount(parseInt(e.target.value, 10))}
                   style={{
-                    backgroundColor: 'transparent',
+                    backgroundColor: isDarkTheme ? 'transparent' : 'white',
                     border: 'none',
                     width: '100%',
                     fontSize: '35px',
+                    fontFamily: 'Space Grotesk',
+                    fontStyle: 'normal',
                     color: isDarkTheme ? 'white' : 'black',
                     outline: 'none',
                   }}
@@ -440,6 +450,7 @@ const BankPage: React.FC = () => {
                 width: '99%',
                 minHeight: '40px',
                 padding: '10px',
+                backgroundColor: isDarkTheme ? 'transparent' : 'white',
                 borderStyle: 'solid',
                 borderWidth: '2px',
                 borderColor: borderNormal,
@@ -451,7 +462,14 @@ const BankPage: React.FC = () => {
                 opacity: 0.7,
               }}
             >
-              <Text variant={TextVariant.bodyMd} style={{ fontSize: '14px' }}>
+              <Text
+                variant={TextVariant.bodyMd}
+                style={{
+                  fontSize: '14px',
+                  fontFamily: 'Space Grotesk',
+                  fontStyle: 'normal',
+                }}
+              >
                 Receive
               </Text>
               <div
@@ -476,6 +494,8 @@ const BankPage: React.FC = () => {
                   <span
                     style={{
                       fontSize: '35px',
+                      fontFamily: 'Space Grotesk',
+                      fontStyle: 'normal',
                       color: isDarkTheme ? 'white' : 'black',
                       flex: 1,
                       opacity: 0.5,
@@ -494,10 +514,12 @@ const BankPage: React.FC = () => {
                     }
                     disabled
                     style={{
-                      backgroundColor: 'transparent',
+                      backgroundColor: isDarkTheme ? 'transparent' : 'white',
                       border: 'none',
                       width: '100%',
                       fontSize: '35px',
+                      fontFamily: 'Space Grotesk',
+                      fontStyle: 'normal',
                       color: isDarkTheme ? 'white' : 'black',
                     }}
                   />
@@ -505,7 +527,13 @@ const BankPage: React.FC = () => {
               </div>
             </div>
             {feeResults?.exchangeRate && (
-              <span style={{ marginLeft: '10px' }}>
+              <span
+                style={{
+                  marginLeft: '10px',
+                  fontFamily: 'Space Grotesk',
+                  fontStyle: 'normal',
+                }}
+              >
                 USDC/{currency === CurrencyId.EUR ? 'EUR' : 'GBP'} rate:{' '}
                 {feeResults?.exchangeRate}
               </span>
@@ -539,11 +567,20 @@ const BankPage: React.FC = () => {
               marginBottom={4}
               labelProps={{
                 variant: TextVariant.bodyMd,
-                style: { fontWeight: 'normal', marginBottom: '3px' },
+                style: {
+                  fontWeight: 'normal',
+                  marginBottom: '3px',
+                  fontFamily: 'Space Grotesk',
+                  fontStyle: 'normal',
+                },
               }}
               inputProps={{
                 variant: TextVariant.bodyMd,
                 textAlign: TextAlign.Left,
+                style: {
+                  fontFamily: 'Space Grotesk',
+                  fontStyle: 'normal',
+                },
               }}
               endAccessory={
                 <ButtonIcon
@@ -560,7 +597,7 @@ const BankPage: React.FC = () => {
             />
           )}
           {bankDetails.coordinates && 'sortCode' in bankDetails.coordinates && (
-            <Box display={Display.Flex}>
+            <Box display={Display.Flex} gap={4}>
               <FormTextField
                 value={bankDetails.coordinates.sortCode}
                 readOnly
@@ -569,11 +606,17 @@ const BankPage: React.FC = () => {
                 marginBottom={4}
                 labelProps={{
                   variant: TextVariant.bodyMd,
-                  style: { fontWeight: 'normal', marginBottom: '3px' },
+                  style: {
+                    fontWeight: 'normal',
+                    marginBottom: '3px',
+                    fontFamily: 'Space Grotesk',
+                    fontStyle: 'normal',
+                  },
                 }}
                 inputProps={{
                   variant: TextVariant.bodyMd,
                   textAlign: TextAlign.Left,
+                  style: { fontFamily: 'Space Grotesk', fontStyle: 'normal' },
                 }}
                 endAccessory={
                   <ButtonIcon
@@ -598,11 +641,17 @@ const BankPage: React.FC = () => {
                 marginBottom={4}
                 labelProps={{
                   variant: TextVariant.bodyMd,
-                  style: { fontWeight: 'normal', marginBottom: '3px' },
+                  style: {
+                    fontWeight: 'normal',
+                    marginBottom: '3px',
+                    fontFamily: 'Space Grotesk',
+                    fontStyle: 'normal',
+                  },
                 }}
                 inputProps={{
                   variant: TextVariant.bodyMd,
                   textAlign: TextAlign.Left,
+                  style: { fontFamily: 'Space Grotesk', fontStyle: 'normal' },
                 }}
                 endAccessory={
                   <ButtonIcon
@@ -627,11 +676,17 @@ const BankPage: React.FC = () => {
             marginBottom={4}
             labelProps={{
               variant: TextVariant.bodyMd,
-              style: { fontWeight: 'normal', marginBottom: '3px' },
+              style: {
+                fontWeight: 'normal',
+                marginBottom: '3px',
+                fontFamily: 'Space Grotesk',
+                fontStyle: 'normal',
+              },
             }}
             inputProps={{
               variant: TextVariant.bodyMd,
               textAlign: TextAlign.Left,
+              style: { fontFamily: 'Space Grotesk', fontStyle: 'normal' },
             }}
             endAccessory={
               <ButtonIcon
@@ -651,11 +706,17 @@ const BankPage: React.FC = () => {
             label="Reference"
             labelProps={{
               variant: TextVariant.bodyMd,
-              style: { fontWeight: 'normal', marginBottom: '3px' },
+              style: {
+                fontWeight: 'normal',
+                marginBottom: '3px',
+                fontFamily: 'Space Grotesk',
+                fontStyle: 'normal',
+              },
             }}
             inputProps={{
               variant: TextVariant.bodyMd,
               textAlign: TextAlign.Left,
+              style: { fontFamily: 'Space Grotesk', fontStyle: 'normal' },
             }}
             endAccessory={
               <ButtonIcon
