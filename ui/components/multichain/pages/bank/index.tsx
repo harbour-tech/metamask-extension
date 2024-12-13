@@ -107,7 +107,7 @@ const BankPage: React.FC = () => {
   const [amount, setAmount] = useState<number | null>(250);
   const debouncedAmount = useDebounce(amount, 400);
   const [feeLoading, setFeeLoading] = useState(false);
-  const [currency, setCurrency] = useState<CurrencyId>(CurrencyId.EUR);
+  const [currency, setCurrency] = useState<CurrencyId>();
   const inputRef = React.createRef<HTMLInputElement>();
 
   const [amountInputFocused, setAmountInputFocused] = useState(false);
@@ -136,7 +136,6 @@ const BankPage: React.FC = () => {
           new GetAccountInfoRequest(),
         );
         setBankDetails({});
-        console.log(accountInfo);
         if (accountInfo.result.case === 'authentication') {
           setAuthentication({
             authenticationUrl: accountInfo.result.value.authenticationUrl,
@@ -369,13 +368,15 @@ const BankPage: React.FC = () => {
         </Box>
       )}
       {bankDetails.coordinates && (
-        <Box paddingBottom={8} paddingTop={1}>
+        <Box paddingBottom={8} paddingTop={0}>
           <Box>
             <div
               style={{
                 width: '99%',
-                minHeight: '40px',
+                minHeight: '30px',
                 padding: '10px',
+                paddingTop: '0px',
+                paddingBottom: '0px',
                 backgroundColor: isDarkTheme ? 'transparent' : 'white',
                 borderWidth: '2px',
                 borderStyle: 'solid',
@@ -393,7 +394,7 @@ const BankPage: React.FC = () => {
               <Text
                 variant={TextVariant.bodyMd}
                 style={{
-                  fontSize: '14px',
+                  fontSize: '12px',
                   fontFamily: 'Space Grotesk',
                   fontStyle: 'normal',
                 }}
@@ -404,7 +405,7 @@ const BankPage: React.FC = () => {
                 style={{
                   display: 'flex',
                   flexDirection: 'row',
-                  gap: '10px',
+                  gap: '2px',
                   justifyContent: 'center',
                   alignItems: 'center',
                 }}
@@ -416,8 +417,8 @@ const BankPage: React.FC = () => {
                       : '/images/euro.svg'
                   }
                   style={{
-                    width: '47px',
-                    height: '30px',
+                    width: '40px',
+                    height: '26px',
                     objectFit: 'cover',
                     overflow: 'hidden',
                     borderRadius: '10px',
@@ -435,7 +436,7 @@ const BankPage: React.FC = () => {
                     backgroundColor: isDarkTheme ? 'transparent' : 'white',
                     border: 'none',
                     width: '100%',
-                    fontSize: '35px',
+                    fontSize: '28px',
                     fontFamily: 'Space Grotesk',
                     fontStyle: 'normal',
                     color: isDarkTheme ? 'white' : 'black',
@@ -448,24 +449,26 @@ const BankPage: React.FC = () => {
             <div
               style={{
                 width: '99%',
-                minHeight: '40px',
+                minHeight: '30px',
                 padding: '10px',
+                paddingTop: '0px',
+                paddingBottom: '0px',
                 backgroundColor: isDarkTheme ? 'transparent' : 'white',
                 borderStyle: 'solid',
                 borderWidth: '2px',
                 borderColor: borderNormal,
                 display: 'flex',
                 flexDirection: 'column',
-                marginTop: '10px',
+                marginTop: '4px',
                 borderRadius: '6px',
-                marginBottom: '10px',
+                marginBottom: '8px',
                 opacity: 0.7,
               }}
             >
               <Text
                 variant={TextVariant.bodyMd}
                 style={{
-                  fontSize: '14px',
+                  fontSize: '12px',
                   fontFamily: 'Space Grotesk',
                   fontStyle: 'normal',
                 }}
@@ -476,7 +479,7 @@ const BankPage: React.FC = () => {
                 style={{
                   display: 'flex',
                   flexDirection: 'row',
-                  gap: '10px',
+                  gap: '2px',
                   justifyContent: 'center',
                   alignItems: 'center',
                 }}
@@ -484,8 +487,8 @@ const BankPage: React.FC = () => {
                 <img
                   src="/images/usdc.svg"
                   style={{
-                    width: '47px',
-                    height: '45px',
+                    width: '36px',
+                    height: '36px',
                     objectFit: 'contain',
                     objectPosition: 'right',
                   }}
@@ -493,7 +496,7 @@ const BankPage: React.FC = () => {
                 {feeLoading ? (
                   <span
                     style={{
-                      fontSize: '35px',
+                      fontSize: '28px',
                       fontFamily: 'Space Grotesk',
                       fontStyle: 'normal',
                       color: isDarkTheme ? 'white' : 'black',
@@ -517,7 +520,7 @@ const BankPage: React.FC = () => {
                       backgroundColor: isDarkTheme ? 'transparent' : 'white',
                       border: 'none',
                       width: '100%',
-                      fontSize: '35px',
+                      fontSize: '28px',
                       fontFamily: 'Space Grotesk',
                       fontStyle: 'normal',
                       color: isDarkTheme ? 'white' : 'black',
@@ -541,8 +544,8 @@ const BankPage: React.FC = () => {
           </Box>
           <Text
             variant={TextVariant.bodyMd}
-            marginBottom={5}
-            marginTop={6}
+            marginBottom={2}
+            marginTop={2}
             width={BlockSize.Min}
             style={{
               fontFamily: 'Space Grotesk',
@@ -564,7 +567,7 @@ const BankPage: React.FC = () => {
               readOnly
               fullWidth
               label="IBAN"
-              marginBottom={4}
+              marginBottom={2}
               labelProps={{
                 variant: TextVariant.bodyMd,
                 style: {
@@ -603,7 +606,7 @@ const BankPage: React.FC = () => {
                 readOnly
                 fullWidth
                 label="Sort Code"
-                marginBottom={4}
+                marginBottom={2}
                 labelProps={{
                   variant: TextVariant.bodyMd,
                   style: {
@@ -638,7 +641,7 @@ const BankPage: React.FC = () => {
                 readOnly
                 fullWidth
                 label="Account Number"
-                marginBottom={4}
+                marginBottom={2}
                 labelProps={{
                   variant: TextVariant.bodyMd,
                   style: {
@@ -673,7 +676,7 @@ const BankPage: React.FC = () => {
             readOnly
             fullWidth
             label="Name"
-            marginBottom={4}
+            marginBottom={2}
             labelProps={{
               variant: TextVariant.bodyMd,
               style: {
@@ -733,7 +736,7 @@ const BankPage: React.FC = () => {
             display={Display.Block}
             marginLeft="auto"
             marginRight="auto"
-            marginTop={12}
+            marginTop={4}
             onClick={() => history.goBack()}
             size={ButtonSize.Sm}
             style={{ fontFamily: 'Space Grotesk', fontStyle: 'normal' }}

@@ -14,11 +14,11 @@ import {
   ///: END:ONLY_INCLUDE_IF
 } from 'react-router-dom';
 ///: BEGIN:ONLY_INCLUDE_IF(build-main,build-beta,build-flask)
-import { toHex } from '@metamask/controller-utils';
+// import { toHex } from '@metamask/controller-utils';
 ///: END:ONLY_INCLUDE_IF
 import {
   ///: BEGIN:ONLY_INCLUDE_IF(build-main,build-beta,build-flask)
-  isCaipChainId,
+  // isCaipChainId,
   ///: END:ONLY_INCLUDE_IF
   CaipChainId,
 } from '@metamask/utils';
@@ -28,7 +28,7 @@ import { InternalAccount, isEvmAccountType } from '@metamask/keyring-api';
 import { SnapId } from '@metamask/snaps-sdk';
 ///: END:ONLY_INCLUDE_IF
 ///: BEGIN:ONLY_INCLUDE_IF(build-main,build-beta,build-flask)
-import { ChainId } from '../../../../shared/constants/network';
+// import { ChainId } from '../../../../shared/constants/network';
 ///: END:ONLY_INCLUDE_IF
 ///: BEGIN:ONLY_INCLUDE_IF(build-mmi)
 import {
@@ -81,7 +81,7 @@ import {
 import { Box, Icon, IconName, IconSize } from '../../component-library';
 import IconButton from '../../ui/icon-button';
 ///: BEGIN:ONLY_INCLUDE_IF(build-main,build-beta,build-flask)
-import useRamps from '../../../hooks/ramps/useRamps/useRamps';
+// import useRamps from '../../../hooks/ramps/useRamps/useRamps';
 import useBridging from '../../../hooks/bridge/useBridging';
 ///: END:ONLY_INCLUDE_IF
 import { ReceiveModal } from '../../multichain/receive-modal';
@@ -206,15 +206,15 @@ const CoinButtons = ({
     return contents;
   };
 
-  ///: BEGIN:ONLY_INCLUDE_IF(build-main,build-beta,build-flask)
-  const getChainId = (): CaipChainId | ChainId => {
-    if (isCaipChainId(chainId)) {
-      return chainId as CaipChainId;
-    }
-    // Otherwise we assume that's an EVM chain ID, so use the usual 0x prefix
-    return toHex(chainId) as ChainId;
-  };
-  ///: END:ONLY_INCLUDE_IF
+  // ///: BEGIN:ONLY_INCLUDE_IF(build-main,build-beta,build-flask)
+  // const getChainId = (): CaipChainId | ChainId => {
+  //   if (isCaipChainId(chainId)) {
+  //     return chainId as CaipChainId;
+  //   }
+  //   // Otherwise we assume that's an EVM chain ID, so use the usual 0x prefix
+  //   return toHex(chainId) as ChainId;
+  // };
+  // ///: END:ONLY_INCLUDE_IF
 
   const getSnapAccountMetaMetricsPropertiesIfAny = (
     internalAccount: InternalAccount,
@@ -302,7 +302,7 @@ const CoinButtons = ({
   ///: END:ONLY_INCLUDE_IF
 
   ///: BEGIN:ONLY_INCLUDE_IF(build-main,build-beta,build-flask)
-  const { openBuyCryptoInPdapp } = useRamps();
+  // const { openBuyCryptoInPdapp } = useRamps();
 
   const { openBridgeExperience } = useBridging();
   ///: END:ONLY_INCLUDE_IF

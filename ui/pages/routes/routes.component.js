@@ -94,6 +94,7 @@ import {
   isCorrectDeveloperTransactionType,
   isCorrectSignatureApprovalType,
 } from '../../../shared/lib/confirmation.utils';
+import BankPage from '../../components/multichain/pages/bank';
 import {
   getConnectingLabel,
   hideAppHeader,
@@ -101,7 +102,6 @@ import {
   setTheme,
   showOnboardingHeader,
 } from './utils';
-import BankPage from '../../components/multichain/pages/bank';
 
 // Begin Lazy Routes
 const OnboardingFlow = mmLazy(() =>
